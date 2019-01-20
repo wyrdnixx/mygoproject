@@ -15,12 +15,9 @@ type Configuration struct {
 	SrvPort string
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello from the api!")
-	modules.HelloWorld()
-}
-
 func main() {
+
+	modules.HelloWorld()
 
 	// Config aus file laden:
 	configuration := Configuration{}
@@ -29,7 +26,7 @@ func main() {
 		fmt.Println("ERROR: Config konnte nicht geladen werden.")
 	}
 
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", modules.MainHandler)
 	log.Println("listening on: ", configuration.SrvPort)
 	log.Fatal(http.ListenAndServe(configuration.SrvPort, nil))
 }
