@@ -6,6 +6,17 @@
 <div class="container">
     <h1>GoLang myGoProject</h1>
 
+
+
+   <p> Value of a: {{.something.a}}</p>
+    <p>Something else: {{.somethingElse}}</p>
+
+    {{range .something}}  
+        <p>Range: {{.}}</p>
+    
+    {{end}}
+
+  
 </div>
 
 {{template "footer"}}

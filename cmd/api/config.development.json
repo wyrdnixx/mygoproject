@@ -1,4 +1,7 @@
 {
 
-	"SrvPort"  : "0.0.0.0:8080"
+	"SrvPort"  : "0.0.0.0:8080",
+	"PGDBName" : "appdb",	
+    "PGDBUser" : "postgres",
+    "PGDBPass" : "secret"
 }

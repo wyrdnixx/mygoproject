@@ -1,6 +1,7 @@
 package modules
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -27,7 +28,27 @@ func renderTemplate(w http.ResponseWriter, tmpl string) {
 	if err != nil {
 		fmt.Println("ERROR: ", err.Error())
 	} else {
-		t.Execute(w, "")
+
+		t.Execute(w, processJson())
+
+	}
+}
+
+// func processJson(_raw string) map[string]interface{} {
+func processJson() map[string]interface{} {
+
+	const jsondata = `{
+			"something":{
+				"a":"valueof_A",
+				"b":"valueof_B"},
+			"somethingElse": [1234, 5678]
+			}`
+
+	m := map[string]interface{}{}
+	if err := json.Unmarshal([]byte(jsondata), &m); err != nil {
+		panic(err)
+	} else {
+		return m
 	}
 
 }

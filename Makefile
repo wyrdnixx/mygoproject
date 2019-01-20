@@ -18,5 +18,6 @@ test:
 clean: down
 	@echo "=============cleaning up============="
 	rm -f api
+	rm -f database
 	docker system prune -f
 	docker volume prune -f

@@ -11,8 +11,13 @@ import (
 	"github.com/wyrdnixx/mygoproject/cmd/api/modules"
 )
 
+// Configuration -  Allgemeine Config
 type Configuration struct {
-	SrvPort string
+	SrvPort  string
+	PGDBName string
+	PGDBHost string
+	PGDBUser string
+	PGDBPass string
 }
 
 func main() {
@@ -23,8 +28,10 @@ func main() {
 	configuration := Configuration{}
 	err := gonfig.GetConf("./cmd/api/config.development.json", &configuration)
 	if err != nil {
-		fmt.Println("ERROR: Config konnte nicht geladen werden.")
+		fmt.Println("ERROR: Config konnte nicht geladen werden: ", err.Error())
 	}
+
+	modules.CheckDB(configuration.PGDBUser, configuration.PGDBPass, configuration.PGDBName)
 
 	http.HandleFunc("/", modules.MainHandler)
 	log.Println("listening on: ", configuration.SrvPort)
