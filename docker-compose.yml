@@ -10,10 +10,9 @@ services:
         volumes:
             - database-volume:/var/lib/postgresql/data
         environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: secret
-            POSTGRES_DB: appdb            
-
+          POSTGRES_USER: pguser
+          #POSTGRES_PASSWORD: pgpass
+          POSTGRES_DB: appdb
     api:
         image: api:latest
         ports:

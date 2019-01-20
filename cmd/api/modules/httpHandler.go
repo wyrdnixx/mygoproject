@@ -7,11 +7,14 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	
+	
 )
 
 func MainHandler(w http.ResponseWriter, r *http.Request) {
 	//fmt.Fprint(w, "Hello from the api!")
-
+	CheckDB("pguser","test", "testdb")
+	
 	renderTemplate(w, "main")
 }
 
@@ -47,7 +50,7 @@ func processJson() map[string]interface{} {
 	m := map[string]interface{}{}
 	if err := json.Unmarshal([]byte(jsondata), &m); err != nil {
 		panic(err)
-	} else {
+	} else { 
 		return m
 	}
 
