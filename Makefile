@@ -16,7 +16,7 @@ test:
 	go test -v -cover ./...
 
 clean: down
-	@echo "=============cleaning up============="
+	@echo "=============cleaning up============="		
 	rm -f api
 	rm -f database
 	docker system prune -f
