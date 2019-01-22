@@ -8,7 +8,7 @@ import (
 	_ "github.com/lib/pq" // Postgres
 )
 
-func CheckDB(_user string, _pass string, _dbname string) {
+func CheckDB(DB_HOST string, DB_PORT string, DB_USER string, DB_PASSWORD string, DB_NAME string) {
 
 	// ( host -> ist der name des DB-Service aus der docker-compose.yml)
 	//dbinfo := fmt.Sprintf("host=database port=5432 user=%s pass=%s dbname=%s sslmode=disable",
@@ -17,11 +17,12 @@ func CheckDB(_user string, _pass string, _dbname string) {
 	//dbinfo := fmt.Sprintf("host=database port=5432 user=postgres dbname=postgres sslmode=disable",
 	//	_user, _dbname)
 
-	DB_HOST := "database"
-	DB_PORT := "5432"
-	DB_USER := "postgres"
-	DB_PASSWORD := "pgpass"
-	DB_NAME := "appdb"
+	/*	DB_HOST := "database"
+		DB_PORT := "5432"
+		DB_USER := "postgres"
+		DB_PASSWORD := "pgpass"
+		DB_NAME := "appdb"
+	*/
 
 	dbInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME)

@@ -13,11 +13,12 @@ import (
 
 // Configuration -  Allgemeine Config
 type Configuration struct {
-	SrvPort           string
-	POSTGRES_DB       string
-	PGDBHost          string
-	POSTGRES_USER     string
-	POSTGRES_PASSWORD string
+	SrvPort    string
+	DBHost     string
+	DBPort     string
+	DBUser     string
+	DBPassword string
+	DBName     string
 }
 
 func main() {
@@ -31,7 +32,7 @@ func main() {
 		fmt.Println("ERROR: Config konnte nicht geladen werden: ", err.Error())
 	}
 
-	modules.CheckDB(configuration.POSTGRES_USER, configuration.POSTGRES_PASSWORD, configuration.POSTGRES_DB)
+	modules.CheckDB(configuration.DBHost, configuration.DBPort, configuration.DBUser, configuration.DBPassword, configuration.DBName)
 
 	http.HandleFunc("/", modules.MainHandler)
 	log.Println("listening on: ", configuration.SrvPort)

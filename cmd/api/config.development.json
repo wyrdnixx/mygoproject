@@ -1,7 +1,9 @@
 {
 
-	"SrvPort"  : "0.0.0.0:8080",
-	"POSTGRES_DB" : "appdb",	
-    "POSTGRES_USER" : "postgres",
-    "POSTGRES_PASSWORD" : "pgpass"
+	"SrvPort"  : "0.0.0.0:8080",	
+    "DBHost": "database",
+	"DBPort" : "5432",
+	"DBUser" : "postgres",
+	"DBPassword" : "pgpass",
+	"DBName" : "appdb"
 }
